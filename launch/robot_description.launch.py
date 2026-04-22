@@ -53,6 +53,7 @@ def generate_launch_description():
     )
     add_to_launcher.add_arg(arg)
     robot = LaunchConfiguration('robot')
+    robot_model = LaunchConfiguration('robot_model')
 
     arg = ExtendedArgument(
         name='robot_model',
@@ -101,6 +102,14 @@ def generate_launch_description():
     )
     add_to_launcher.add_arg(arg)
 
+    arg = ExtendedArgument(
+        name='end_effector',
+        description='End effector to use',
+        default_value='rg6',
+        use_env=True,
+        environment='END_EFFECTOR',
+    )
+    add_to_launcher.add_arg(arg)
     params = add_to_launcher.process_arg()
 
     robot_description_content = Command(
@@ -111,7 +120,8 @@ def generate_launch_description():
             " namespace:=",params["namespace"],
             " prefix:=",params["frame_prefix"],
             " gazebo_ignition:=",params["gazebo_ignition"],
-            " low_performance:=",params["low_performance_simulation"]
+            " low_performance:=",params["low_performance_simulation"],
+            " end_effector:=",params["end_effector"]
         ]
     )
     robot_description_param = ParameterValue(robot_description_content, value_type=str)

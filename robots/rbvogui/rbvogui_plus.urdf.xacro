@@ -18,10 +18,13 @@
     default="" />
   <xacro:arg
     name="gazebo_ignition"
-    default="false" />
+    default="true" />
   <xacro:arg
     name="ur_type"
     default="ur5e" />
+  <xacro:arg
+    name="end_effector"
+    default="rg6" />
 
   <!-- RB-VOGUI -->
   <xacro:rbvogui
@@ -34,7 +37,8 @@
     ur_type="$(arg ur_type)"
     frame_prefix="$(arg prefix)arm_"
     parent="$(arg prefix)chassis_link"
-    gazebo_ignition="$(arg gazebo_ignition)">
+    gazebo_ignition="$(arg gazebo_ignition)"
+    end_effector="$(arg end_effector)">
     <origin
       xyz="0 0 0.235"
       rpy="0 0 0" />
@@ -57,9 +61,9 @@
     parent="$(arg prefix)base_link"
     node_namespace="$(arg namespace)"
     node_name="front_laser"
-    gazebo_ignition="$(arg gazebo_ignition)"
-    max_angle="2.1"
-    min_angle="-2.1">
+    gazebo_ignition="$(arg gazebo_ignition)">
+    <!-- max_angle="2.1"
+    min_angle="-2.1" -->
     <origin
       xyz="0.53 0.33 0.1145"
       rpy="0 ${-pi} ${-3/4*pi}" />
@@ -69,9 +73,9 @@
     parent="$(arg prefix)base_link"
     node_namespace="$(arg namespace)"
     node_name="rear_laser"
-    gazebo_ignition="$(arg gazebo_ignition)"
-    max_angle="2.1"
-    min_angle="-2.1">
+    gazebo_ignition="$(arg gazebo_ignition)">
+    <!-- max_angle="2.1"
+    min_angle="-2.1" -->
     <origin
       xyz="-0.53 -0.33 0.1145"
       rpy="0 ${-pi} ${1/4*pi}" />

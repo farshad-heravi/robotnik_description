@@ -8,6 +8,7 @@
     filename="$(find robotnik_description)/urdf/arms/ur_macro.urdf.xacro" />
   <xacro:include
     filename="$(find robotnik_sensors)/urdf/all_sensors.urdf.xacro" />
+  <xacro:include filename="$(find campetella_sim)/models/tool_changer/urdf/tool_changer_macro.urdf.xacro" />
 
   <!-- ARGUMENTS -->
   <xacro:arg
@@ -31,6 +32,14 @@
     prefix="$(arg prefix)"
     gazebo_ignition="$(arg gazebo_ignition)"
     namespace="$(arg namespace)" />
+  
+  <!-- TOOL CHANGER -->
+  <xacro:tool_changer
+        parent="$(arg prefix)base_link"
+        prefix="$(arg prefix)tc_"
+        xyz="0.0 0.0 0.402"
+        rpy="0 0 1.57"
+    />
 
   <!-- ARMS -->
   <xacro:arm_ur
@@ -39,8 +48,9 @@
     parent="$(arg prefix)chassis_link"
     gazebo_ignition="$(arg gazebo_ignition)"
     end_effector="$(arg end_effector)">
+    <!-- Correct the origin of the arm below: -->
     <origin
-      xyz="0 0 0.235"
+      xyz="0.08 0.0 0.25" 
       rpy="0 0 0" />
   </xacro:arm_ur>
 

@@ -8,7 +8,7 @@
   <!-- <xacro:include filename="$(find campetella_sim)/models/2f_85/urdf/robotiq_2f_85_macro.urdf.xacro" /> -->
   <!-- <xacro:include filename="$(find campetella_sim)/models/sd_35/urdf/sd_25_macro.urdf.xacro" /> -->
 
-  <xacro:property name="initial_positions" value="${xacro.load_yaml('$(find ur_description)/config/initial_positions.yaml')}"/>
+  <xacro:property name="initial_positions" value="${xacro.load_yaml('initial_positions.yaml')}"/>
   
   <xacro:macro
     name="arm_ur"

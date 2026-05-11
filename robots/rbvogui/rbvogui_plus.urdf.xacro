@@ -16,7 +16,7 @@
     default="robot" />
   <xacro:arg
     name="prefix"
-    default="" />
+    default="robot_" />
   <xacro:arg
     name="gazebo_ignition"
     default="true" />

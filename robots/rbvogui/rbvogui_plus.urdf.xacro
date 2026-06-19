@@ -9,6 +9,7 @@
   <xacro:include
     filename="$(find robotnik_sensors)/urdf/all_sensors.urdf.xacro" />
   <xacro:include filename="$(find campetella_sim)/models/tool_changer/urdf/tool_changer_macro.urdf.xacro" />
+  <xacro:include filename="$(find campetella_sim)/models/tool_changer/urdf/tool_changer_detachable_joints.urdf.xacro" />
 
   <!-- ARGUMENTS -->
   <xacro:arg
@@ -25,7 +26,10 @@
     default="ur5e" />
   <xacro:arg
     name="end_effector"
-    default="rg6" />
+    default="none" />
+  <xacro:arg
+    name="use_tool_changer"
+    default="true" />
 
   <!-- RB-VOGUI -->
   <xacro:rbvogui
@@ -112,4 +116,11 @@
       xyz="-0.515 0.0 0.29"
       rpy="0 0 -${pi}" />
   </xacro:sensor_intel_realsense_d435>
+
+  <!-- DETACHABLE TOOL JOINTS (4 tools × 2 joints = 8 DetachableJoint plugins) -->
+  <xacro:if value="$(arg use_tool_changer)">
+    <xacro:tool_changer_detachable_joints
+      prefix="$(arg prefix)"
+      robot_id="$(arg namespace)" />
+  </xacro:if>
 </robot>

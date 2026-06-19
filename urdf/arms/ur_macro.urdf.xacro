@@ -6,7 +6,7 @@
   <xacro:include
     filename="$(find ur_description)/urdf/ur_macro.xacro" />
   <!-- <xacro:include filename="$(find campetella_sim)/models/2f_85/urdf/robotiq_2f_85_macro.urdf.xacro" /> -->
-  <!-- <xacro:include filename="$(find campetella_sim)/models/sd_35/urdf/sd_25_macro.urdf.xacro" /> -->
+  <!-- <xacro:include filename="$(find campetella_sim)/models/sd_35/urdf/sd_35_macro.urdf.xacro" /> -->
 
   <xacro:property name="initial_positions" value="${xacro.load_yaml('initial_positions.yaml')}"/>
   
@@ -68,12 +68,12 @@
         </xacro:robotiq_gripper>
     </xacro:if>
 
-    <!-- Screwdriver -->
+    <!-- Screwdriver (baked-in path kept for backward compatibility; unused when detachable) -->
     <xacro:if value="${end_effector == 'screwdriver'}">
-        <xacro:sd_25_screwdrivew 
-            scale="0.001" 
+        <xacro:sd_35_screwdriver
+            scale="0.001"
             parent="${frame_prefix}tool0"
-            xyz="0 0.095 0.065" 
+            xyz="0 0.095 0.065"
             rpy="3.14 0 0"
         />
     </xacro:if>

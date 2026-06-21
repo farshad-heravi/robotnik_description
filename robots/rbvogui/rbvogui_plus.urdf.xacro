@@ -58,6 +58,9 @@
       rpy="0 0 0" />
   </xacro:arm_ur>
 
+  <!-- Detachable joints for the 4-tool tool-changer scheme -->
+  <xacro:tool_changer_detachable_joints prefix="$(arg prefix)" robot_id="$(arg namespace)"/>
+
   <!-- IMU -->
   <xacro:sensor_vectornav
     frame_prefix="$(arg prefix)imu_"

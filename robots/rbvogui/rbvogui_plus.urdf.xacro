@@ -10,7 +10,6 @@
     filename="$(find robotnik_sensors)/urdf/all_sensors.urdf.xacro" />
   <xacro:include filename="$(find campetella_sim)/models/tool_changer/urdf/tool_changer_macro.urdf.xacro" />
   <xacro:include filename="$(find campetella_sim)/models/tool_changer/urdf/tool_changer_detachable_joints.urdf.xacro" />
-  <xacro:include filename="$(find campetella_sim)/models/ur_wrist_camera/urdf/ur_wrist_camera.urdf.xacro" />
 
   <!-- ARGUMENTS -->
   <xacro:arg
@@ -52,10 +51,12 @@
     frame_prefix="$(arg prefix)arm_"
     parent="$(arg prefix)chassis_link"
     gazebo_ignition="$(arg gazebo_ignition)"
-    end_effector="$(arg end_effector)">
+    end_effector="$(arg end_effector)"
+    has_wrist_camera="true"
+    node_namespace="$(arg namespace)">
     <!-- Correct the origin of the arm below: -->
     <origin
-      xyz="0.08 0.0 0.25" 
+      xyz="0.08 0.0 0.25"
       rpy="0 0 0" />
   </xacro:arm_ur>
 
@@ -117,16 +118,6 @@
       xyz="-0.515 0.0 0.29"
       rpy="0 0 -${pi}" />
   </xacro:sensor_intel_realsense_d435>
-
-  <!-- WRIST CAMERA-->
-  <xacro:ur_wrist_camera
-    prefix="$(arg prefix)arm_rgbd_camera_"
-    parent="$(arg prefix)arm_tool0"
-    node_namespace="$(arg namespace)"
-    node_name="arm_camera"
-    gazebo_ignition="$(arg gazebo_ignition)">
-    <origin xyz="0 0 0" rpy="0 0 0" />
-  </xacro:ur_wrist_camera>
 
   <!-- DETACHABLE TOOL JOINTS (4 tools × 2 joints = 8 DetachableJoint plugins) -->
   <xacro:if value="$(arg use_tool_changer)">

@@ -45,7 +45,7 @@
       kinematics_parameters_file="${kinematics_params}"
       physical_parameters_file="${physical_params}"
       visual_parameters_file="${visual_params}"
-      add_tool_changer="${not has_wrist_camera}">
+    >
       <xacro:insert_block name="origin" />
     </xacro:ur_robot>
 

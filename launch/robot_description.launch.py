@@ -110,7 +110,18 @@ def generate_launch_description():
         environment='END_EFFECTOR',
     )
     add_to_launcher.add_arg(arg)
+
+    arg = ExtendedArgument(
+        name='wrist_camera',
+        description='Camera type to use on the wrist stereolabs_zed2i or realsense_d435i',
+        default_value='stereolabs_zed2i',
+        use_env=True,
+        environment='WRIST_CAMERA',
+    )
+    add_to_launcher.add_arg(arg)
+
     params = add_to_launcher.process_arg()
+
 
     robot_description_content = Command(
         [
@@ -121,7 +132,8 @@ def generate_launch_description():
             " prefix:=",params["frame_prefix"],
             " gazebo_ignition:=",params["gazebo_ignition"],
             " low_performance:=",params["low_performance_simulation"],
-            " end_effector:=",params["end_effector"]
+            " end_effector:=",params["end_effector"],
+            " wrist_camera:=",params["wrist_camera"],
         ]
     )
     robot_description_param = ParameterValue(robot_description_content, value_type=str)

@@ -23,6 +23,7 @@
     end_effector:='none'
     has_wrist_camera:=false
     node_namespace:=''
+    wrist_camera:='stereolabs_zed2i'
     ">
     <xacro:property
       name="joint_limit_params"
@@ -90,7 +91,8 @@
         parent="${frame_prefix}flange"
         node_namespace="${node_namespace}"
         node_name="arm_camera"
-        gazebo_ignition="${gazebo_ignition}">
+        gazebo_ignition="${gazebo_ignition}"
+        wrist_camera="${wrist_camera}">
         <origin xyz="0 0 0" rpy="${pi/2.0} 0 ${pi/2.0}" />
       </xacro:ur_wrist_camera>
 

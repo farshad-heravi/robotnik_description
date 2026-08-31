@@ -31,6 +31,10 @@
     name="use_tool_changer"
     default="true" />
 
+  <xacro:arg 
+    name="wrist_camera" 
+    default="stereolabs_zed2i"/>
+
   <!-- RB-VOGUI -->
   <xacro:rbvogui
     prefix="$(arg prefix)"
@@ -53,7 +57,8 @@
     gazebo_ignition="$(arg gazebo_ignition)"
     end_effector="$(arg end_effector)"
     has_wrist_camera="true"
-    node_namespace="$(arg namespace)">
+    node_namespace="$(arg namespace)"
+    wrist_camera="$(arg wrist_camera)">
     <!-- Correct the origin of the arm below: -->
     <origin
       xyz="0.08 0.0 0.25"

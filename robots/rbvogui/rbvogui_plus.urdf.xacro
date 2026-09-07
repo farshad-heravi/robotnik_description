@@ -30,6 +30,14 @@
   <xacro:arg
     name="use_tool_changer"
     default="true" />
+  <!-- Optional model parameters supplied by ur_robot_driver on real hardware. -->
+  <xacro:arg name="joint_limit_params" default="" />
+  <xacro:arg name="kinematics_params" default="" />
+  <xacro:arg name="physical_params" default="" />
+  <xacro:arg name="visual_params" default="" />
+  <xacro:arg name="safety_limits" default="false" />
+  <xacro:arg name="safety_pos_margin" default="0.15" />
+  <xacro:arg name="safety_k_position" default="20" />
 
   <xacro:arg 
     name="wrist_camera" 
@@ -58,7 +66,14 @@
     end_effector="$(arg end_effector)"
     has_wrist_camera="true"
     node_namespace="$(arg namespace)"
-    wrist_camera="$(arg wrist_camera)">
+    wrist_camera="$(arg wrist_camera)"
+    joint_limit_params_file="$(arg joint_limit_params)"
+    kinematics_params_file="$(arg kinematics_params)"
+    physical_params_file="$(arg physical_params)"
+    visual_params_file="$(arg visual_params)"
+    safety_limits="$(arg safety_limits)"
+    safety_pos_margin="$(arg safety_pos_margin)"
+    safety_k_position="$(arg safety_k_position)">
     <!-- Correct the origin of the arm below: -->
     <origin
       xyz="0.08 0.0 0.25"

@@ -9,6 +9,8 @@
   <!-- <xacro:include filename="$(find campetella_sim)/models/sd_35/urdf/sd_35_macro.urdf.xacro" /> -->
   <xacro:include
     filename="$(find campetella_sim)/models/ur_wrist_camera/urdf/ur_wrist_camera.urdf.xacro" />
+  <xacro:include
+    filename="$(find campetella_sim)/models/EAD50/urdf/EAD50_macro.urdf.xacro" />
 
   <xacro:property name="initial_positions" value="${xacro.load_yaml('initial_positions.yaml')}"/>
 
@@ -99,6 +101,13 @@
             xyz="0 0.095 0.065"
             rpy="3.14 0 0"
         />
+    </xacro:if>
+
+    <!-- EAD50 test tool, mounted directly on the UR tool0 frame. -->
+    <xacro:if value="${end_effector == 'EAD50'}">
+      <xacro:EAD50 prefix="${frame_prefix}" parent="${frame_prefix}tool0">
+        <origin xyz="0.12 0 -0.3" rpy="0 0 0"/>
+      </xacro:EAD50>
     </xacro:if>
 
     <!-- Wrist camera: flange -> camera adapter -> tool changer robot side -->

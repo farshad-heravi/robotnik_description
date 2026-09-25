@@ -1,6 +1,8 @@
+# Arm folded over the base (elbow 90 deg): inside the base footprint, away
+# from the elbow singularity, and a short motion to any scan pose.
 shoulder_pan_joint: -1.57
-shoulder_lift_joint: -1.57
-elbow_joint: 0.0
-wrist_1_joint: -1.57
-wrist_2_joint: 0.0
+shoulder_lift_joint: -2.2
+elbow_joint: 1.57
+wrist_1_joint: -0.95
+wrist_2_joint: -1.57
 wrist_3_joint: 0.0

@@ -1,8 +1,10 @@
 # Arm folded over the base (elbow 90 deg): inside the base footprint, away
-# from the elbow singularity, and a short motion to any scan pose.
-shoulder_pan_joint: -1.57
+# from the elbow singularity, with the shoulder turned so the wrist and
+# camera face the robot's left (the machine side of the counterclockwise
+# loop) and the forearm the other side. Collision-free in MoveIt.
+shoulder_pan_joint: 1.57
 shoulder_lift_joint: -2.2
 elbow_joint: 1.57
-wrist_1_joint: -0.95
-wrist_2_joint: -1.57
-wrist_3_joint: 0.0
+wrist_1_joint: 0.63
+wrist_2_joint: 1.57
+wrist_3_joint: 3.14

@@ -120,6 +120,15 @@ def generate_launch_description():
     )
     add_to_launcher.add_arg(arg)
 
+    arg = ExtendedArgument(
+        name='ur_type',
+        description='Universal Robots arm model (ur5e, ur15, ...)',
+        default_value='ur5e',
+        use_env=True,
+        environment='UR_TYPE',
+    )
+    add_to_launcher.add_arg(arg)
+
     params = add_to_launcher.process_arg()
 
 
@@ -134,6 +143,7 @@ def generate_launch_description():
             " low_performance:=",params["low_performance_simulation"],
             " end_effector:=",params["end_effector"],
             " wrist_camera:=",params["wrist_camera"],
+            " ur_type:=",params["ur_type"],
         ]
     )
     robot_description_param = ParameterValue(robot_description_content, value_type=str)

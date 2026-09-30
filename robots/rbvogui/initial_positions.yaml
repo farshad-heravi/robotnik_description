@@ -1,10 +1,12 @@
-# Arm folded over the base (elbow 90 deg): inside the base footprint, away
-# from the elbow singularity, with the shoulder turned so the wrist and
-# camera face the robot's left (the machine side of the counterclockwise
-# loop) and the forearm the other side. Collision-free in MoveIt.
-shoulder_pan_joint: 1.57
-shoulder_lift_joint: -2.2
-elbow_joint: 1.57
-wrist_1_joint: 0.63
+# Arm folded over the base, inside the base footprint: the shoulder motor
+# towards the front of the base (pan -pi/2), the elbow on the side away from
+# the machine (right), the wrist up, and the wrist camera near the base center (1.27 m high)
+# aimed at the robot's left (the machine side of the counterclockwise loop),
+# 12 deg down, image upright. Collision-free in MoveIt. Same as the travel_arm_q
+# of renee_trajectory_generation's defect_detection_sim.yaml.
+shoulder_pan_joint: -1.57
+shoulder_lift_joint: -0.9
+elbow_joint: -1.5
+wrist_1_joint: -1.15
 wrist_2_joint: 1.57
 wrist_3_joint: 3.14

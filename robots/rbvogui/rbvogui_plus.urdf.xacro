@@ -92,30 +92,30 @@
   </xacro:sensor_vectornav>
 
   <!-- LASERS -->
-  <xacro:sensor_sick_s300
+  <!-- SICK TiM571s, as fitted on the real rover. Poses match the rover's
+       ROS1 URDF (rbvogui_std.urdf.xacro: chassis_link origin (-0.012, 0,
+       0.1775) + laser (+-0.478, +-0.336, 0.019)), expressed in base_link, so
+       sim scans line up with the robot's real TF. -->
+  <xacro:sensor_sick_tim571
     frame_prefix="$(arg prefix)front_laser_"
     parent="$(arg prefix)base_link"
     node_namespace="$(arg namespace)"
     node_name="front_laser"
     gazebo_ignition="$(arg gazebo_ignition)">
-    <!-- max_angle="2.1"
-    min_angle="-2.1" -->
     <origin
-      xyz="0.53 0.33 0.1145"
+      xyz="0.466 0.336 0.1965"
       rpy="0 ${-pi} ${-3/4*pi}" />
-  </xacro:sensor_sick_s300>
-  <xacro:sensor_sick_s300
+  </xacro:sensor_sick_tim571>
+  <xacro:sensor_sick_tim571
     frame_prefix="$(arg prefix)rear_laser_"
     parent="$(arg prefix)base_link"
     node_namespace="$(arg namespace)"
     node_name="rear_laser"
     gazebo_ignition="$(arg gazebo_ignition)">
-    <!-- max_angle="2.1"
-    min_angle="-2.1" -->
     <origin
-      xyz="-0.53 -0.33 0.1145"
+      xyz="-0.490 -0.336 0.1965"
       rpy="0 ${-pi} ${1/4*pi}" />
-  </xacro:sensor_sick_s300>
+  </xacro:sensor_sick_tim571>
 
   <!-- CAMERAS -->
   <xacro:sensor_intel_realsense_d435

@@ -11,6 +11,8 @@
     filename="$(find campetella_sim)/models/ur_wrist_camera/urdf/ur_wrist_camera.urdf.xacro" />
   <xacro:include
     filename="$(find campetella_sim)/models/EAD50/urdf/EAD50_macro.urdf.xacro" />
+  <xacro:include
+    filename="$(find campetella_sim)/models/pointer_tester/urdf/pointer_tester_macro.urdf.xacro" />
 
   <xacro:property name="initial_positions" value="${xacro.load_yaml('initial_positions.yaml')}"/>
 
@@ -108,6 +110,19 @@
       <xacro:EAD50 prefix="${frame_prefix}" parent="${frame_prefix}tool0">
         <origin xyz="0.12 0 -0.3" rpy="0 0 0"/>
       </xacro:EAD50>
+    </xacro:if>
+
+    <!-- pointer_tester (campetella_sim/models/pointer_tester): mounted on the
+         tool changer robot side, at its outer face (z=0.031, from
+         tc_robot_side.stl); falls back to tool0 when the camera/tool-changer
+         branch is off. -->
+    <xacro:if value="${end_effector == 'pointer_tester'}">
+      <xacro:property name="has_tool_changer"
+        value="${has_wrist_camera and wrist_camera != 'none'}" />
+      <xacro:pointer_tester prefix="${frame_prefix}"
+        parent="${frame_prefix}${'tc_robot_side' if has_tool_changer else 'tool0'}">
+        <origin xyz="0 0 ${0.031 if has_tool_changer else 0.0}" rpy="0 0 0"/>
+      </xacro:pointer_tester>
     </xacro:if>
 
     <!-- Wrist camera: flange -> camera adapter -> tool changer robot side -->
